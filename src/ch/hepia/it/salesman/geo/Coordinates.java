@@ -20,4 +20,12 @@ public class Coordinates {
 	public double distanceTo(Coordinates b){
 		return Math.sqrt(Math.pow(this.getX()-b.getX(),2)+Math.pow(this.getY()-b.getY(),2));
 	}
+
+	@Override
+	public String toString () {
+		return "Coordinates{" +
+				"x=" + x +
+				", y=" + y +
+				'}';
+	}
 }

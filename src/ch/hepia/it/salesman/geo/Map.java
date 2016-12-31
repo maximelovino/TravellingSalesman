@@ -22,4 +22,29 @@ public class Map {
 			cities[i] = new Coordinates(x,y);
 		}
 	}
+
+	public Coordinates getCity(int index){
+		return cities[index];
+	}
+
+	public int count(){
+		return cities.length;
+	}
+
+	public int getxSize () {
+		return xSize;
+	}
+
+	public int getySize () {
+		return ySize;
+	}
+
+	@Override
+	public String toString () {
+		String str = "";
+		for (int i = 0; i < this.cities.length; i++) {
+			str += this.cities[i].toString() + "\n";
+		}
+		return str;
+	}
 }
