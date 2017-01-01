@@ -44,9 +44,11 @@ public class Trip {
 	public ArrayList<Trip> neighbours(){
 		ArrayList<Trip> toReturn = new ArrayList<>();
 		for (int i = 0; i < this.trip.length; i++) {
-			Trip newTrip = new Trip(this);
-			newTrip.swapTwoCities(i,(i+1)%this.trip.length);
-			toReturn.add(newTrip);
+			for (int j = i+1; j < this.trip.length; j++) {
+				Trip newTrip = new Trip(this);
+				newTrip.swapTwoCities(i,j);
+				toReturn.add(newTrip);
+			}
 		}
 		return toReturn;
 	}
