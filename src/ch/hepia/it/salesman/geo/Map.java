@@ -43,6 +43,7 @@ public class Map {
 	public String toString () {
 		String str = "";
 		for (int i = 0; i < this.cities.length; i++) {
+			str += "City "+i+": ";
 			str += this.cities[i].toString() + "\n";
 		}
 		return str;

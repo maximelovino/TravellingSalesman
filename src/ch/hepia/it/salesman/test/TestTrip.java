@@ -3,6 +3,8 @@ package ch.hepia.it.salesman.test;
 import ch.hepia.it.salesman.geo.Map;
 import ch.hepia.it.salesman.geo.Trip;
 
+import java.util.ArrayList;
+
 public class TestTrip {
 	public static void main (String[] args) {
 		Map map = new Map(10,100,100);
@@ -10,5 +12,10 @@ public class TestTrip {
 		Trip trip = new Trip(map);
 		System.out.println(map);
 		System.out.println("Total distance: "+trip.getTotalLength());
+		System.out.println("Trip: "+ trip);
+		ArrayList<Trip> neighbours = trip.neighbours();
+		for (Trip tr : neighbours) {
+			System.out.println("Trip: "+tr+" Total distance "+tr.getTotalLength());
+		}
 	}
 }

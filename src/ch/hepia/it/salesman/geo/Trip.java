@@ -1,5 +1,7 @@
 package ch.hepia.it.salesman.geo;
 
+import java.util.ArrayList;
+
 public class Trip {
 	private int[] trip;
 	private Map map;
@@ -12,6 +14,14 @@ public class Trip {
 		}
 	}
 
+	public Trip (Trip trip) {
+		this.map = trip.map;
+		this.trip = new int[trip.trip.length];
+		for (int i = 0; i < this.trip.length; i++) {
+			this.trip[i] = trip.trip[i];
+		}
+	}
+
 	public double getTotalLength(){
 		double distance = 0;
 		for (int i = 0; i < trip.length; i++) {
@@ -20,4 +30,30 @@ public class Trip {
 		return distance;
 	}
 
+	@Override
+	public String toString () {
+		String str = "[";
+		for (int i = 0; i < trip.length; i++) {
+			str += trip[i];
+			if (i != trip.length-1) str += ",";
+		}
+		str += "]";
+		return str;
+	}
+
+	public ArrayList<Trip> neighbours(){
+		ArrayList<Trip> toReturn = new ArrayList<>();
+		for (int i = 0; i < this.trip.length; i++) {
+			Trip newTrip = new Trip(this);
+			newTrip.swapTwoCities(i,(i+1)%this.trip.length);
+			toReturn.add(newTrip);
+		}
+		return toReturn;
+	}
+
+	public void swapTwoCities(int idxA, int idxB){
+		int temp = this.trip[idxA];
+		this.trip[idxA] = this.trip[idxB];
+		this.trip[idxB] = temp;
+	}
 }
