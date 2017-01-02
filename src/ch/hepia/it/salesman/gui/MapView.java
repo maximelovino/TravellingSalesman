@@ -1,6 +1,6 @@
 package ch.hepia.it.salesman.gui;
 
-import ch.hepia.it.salesman.geo.Coordinates;
+import ch.hepia.it.salesman.geo.City;
 import ch.hepia.it.salesman.geo.Map;
 import ch.hepia.it.salesman.geo.Trip;
 
@@ -27,8 +27,8 @@ public class MapView extends JPanel {
 		g.setColor(Color.RED);
 		System.out.println("Trip from view "+trip);
 		for (int i = 0; i < cnt; i++) {
-			Coordinates tmpCity = trip.getStopFromTrip(i);
-			Coordinates nextCity = trip.getStopFromTrip((i+1) % cnt);
+			City tmpCity = trip.getStopFromTrip(i);
+			City nextCity = trip.getStopFromTrip((i+1) % cnt);
 			g.drawOval(tmpCity.getX()*10-CIRCLE_RADIUS/2,tmpCity.getY()*10-CIRCLE_RADIUS/2,CIRCLE_RADIUS,CIRCLE_RADIUS);
 			g.drawLine(tmpCity.getX()*10,tmpCity.getY()*10,nextCity.getX()*10,nextCity.getY()*10);
 		}

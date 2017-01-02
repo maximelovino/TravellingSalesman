@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SimulatedAnnealing {
-	private static final int INITIAL_TEMP = 100;
+	private static final int INITIAL_TEMP = 1000;
 	private int currentTemp;
 	private Trip trip;
 	private Random rnd;

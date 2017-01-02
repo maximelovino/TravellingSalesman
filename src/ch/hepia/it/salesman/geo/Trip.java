@@ -59,7 +59,7 @@ public class Trip {
 		this.trip[idxB] = temp;
 	}
 
-	public Coordinates getStopFromTrip(int idx){
+	public City getStopFromTrip(int idx){
 		return map.getCity(this.trip[idx]);
 	}
 }
