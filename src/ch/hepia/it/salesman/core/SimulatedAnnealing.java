@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SimulatedAnnealing {
-	private static final int INITIAL_TEMP = 1000;
-	private int currentTemp;
+	private static final int INITIAL_TEMP = 100000;
+	private static final double COOLING_RATE = 0.003;
+	private double currentTemp;
 	private Trip trip;
 	private Random rnd;
 
@@ -18,18 +19,17 @@ public class SimulatedAnnealing {
 	}
 
 	public Trip computeBestTrip(){
-		while(currentTemp > 0){
+		while(currentTemp > 1){
 			ArrayList<Trip> neighbours = trip.neighbours();
 			Trip tmp = neighbours.get(rnd.nextInt(neighbours.size()));
 			trip = p(tmp,trip) ? tmp : trip;
-			System.out.println(trip.getTotalLength());
-			currentTemp--;
+			currentTemp *= (1-COOLING_RATE);
 		}
 		return trip;
 	}
 
 	private double tempFunction(double fitA, double fitB){
-		return Math.exp(Math.abs(fitA-fitB)/currentTemp);
+		return Math.exp((fitB-fitA)/currentTemp);
 	}
 
 	private boolean p(Trip a, Trip current){
@@ -40,7 +40,7 @@ public class SimulatedAnnealing {
 			return true;
 
 		double tmp = rnd.nextDouble();
-
-		return tmp <= tempFunction(fitA, fitCurrent);
+		double tempFuncValue = tempFunction(fitA,fitCurrent);
+		return tmp <= tempFuncValue;
 	}
 }

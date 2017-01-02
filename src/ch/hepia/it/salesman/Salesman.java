@@ -25,5 +25,6 @@ public class Salesman {
 		SimulatedAnnealing sim = new SimulatedAnnealing(new Trip(trip));
 		Trip bestTrip = sim.computeBestTrip();
 		System.out.println("The best is: "+bestTrip+" total distance "+bestTrip.getTotalLength());
+		view.setTrip(bestTrip);
 	}
 }
