@@ -46,10 +46,10 @@ public class MapView extends JPanel {
 		for (int i = 0; i < cnt; i++) {
 			City tmpCity = trip.getStopFromTrip(i);
 			City nextCity = trip.getStopFromTrip((i+1) % cnt);
-			int tmpCityX = (int)Math.round(((tmpCity.getX()/100.0) * sizeX-2*BORDER)+BORDER);
-			int tmpCityY = (int)Math.round(((tmpCity.getY()/100.0) * sizeY-2*BORDER)+BORDER);
-			int nextCityX = (int)Math.round(((nextCity.getX()/100.0) * sizeX-2*BORDER)+BORDER);
-			int nextCityY = (int)Math.round(((nextCity.getY()/100.0) * sizeY-2*BORDER)+BORDER);
+			int tmpCityX = (int)Math.round(((tmpCity.getX()/(double) map.getxSize()) * (sizeX-2*BORDER))+BORDER);
+			int tmpCityY = (int)Math.round(((tmpCity.getY()/(double) map.getySize()) * (sizeY-2*BORDER))+BORDER);
+			int nextCityX = (int)Math.round(((nextCity.getX()/(double) map.getxSize()) * (sizeX-2*BORDER))+BORDER);
+			int nextCityY = (int)Math.round(((nextCity.getY()/(double) map.getySize()) * (sizeY-2*BORDER))+BORDER);
 
 			g.fillOval(tmpCityX-CIRCLE_RADIUS/2,tmpCityY-CIRCLE_RADIUS/2,CIRCLE_RADIUS,CIRCLE_RADIUS);
 			g.drawLine(tmpCityX,tmpCityY,nextCityX,nextCityY);
