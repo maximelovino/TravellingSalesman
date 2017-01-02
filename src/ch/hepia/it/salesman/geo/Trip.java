@@ -58,4 +58,8 @@ public class Trip {
 		this.trip[idxA] = this.trip[idxB];
 		this.trip[idxB] = temp;
 	}
+
+	public Coordinates getStopFromTrip(int idx){
+		return map.getCity(this.trip[idx]);
+	}
 }
