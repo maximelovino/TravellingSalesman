@@ -92,4 +92,16 @@ public class Trip {
 	public City getStopFromTrip(int idx){
 		return map.getCity(this.trip[idx]);
 	}
+
+	/**
+	 * Method to change the map and reset a basic trip for it
+	 * @param map	The new map
+	 */
+	public void changeMap(Map map){
+		this.map = map;
+		this.trip = new int[this.map.count()];
+		for (int i = 0; i < trip.length; i++) {
+			trip[i] = i;
+		}
+	}
 }
