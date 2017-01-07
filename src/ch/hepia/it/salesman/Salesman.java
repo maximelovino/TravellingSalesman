@@ -13,7 +13,8 @@ import java.awt.*;
  */
 public class Salesman {
 	public static void main (String[] args) throws InterruptedException {
-		Map map = new Map(10,100,100);
+		Integer size = Integer.valueOf(JOptionPane.showInputDialog("How many cities do you want to use?", 10));
+		Map map = new Map(size,100,100);
 		map.generateRandomCities();
 		Trip trip = new Trip(map);
 		System.out.println(map);
